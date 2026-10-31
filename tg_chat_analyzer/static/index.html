@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тема — анализ переписки</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
+<body>
+<header class="topbar"><a class="brand" href="/">тема<span> / </span><small>анализ переписки</small></a><span class="local"><i></i> Локально на вашем компьютере</span></header>
+<main>
+<div class="page-heading"><div><p class="eyebrow">ОТ СООБЩЕНИЙ К ИСТОЧНИКАМ</p><h1>Что обсуждали<br>по вашей теме?</h1><p class="intro">Выберите переписку и тему. Получите находки,<br class="wide"> которые можно проверить по сообщениям.</p></div><div class="steps"><span><b>01</b> Переписка</span><span><b>02</b> Тема</span><span><b>03</b> Отчёт с цитатами</span></div></div>
+<div id="notice" role="status" aria-live="polite" hidden></div>
+<div class="workspace">
+<aside>
+<section class="panel"><div class="panel-title"><span class="number">01</span><h2>Переписка</h2></div>
+<p class="muted">Экспорты Telegram в формате JSON.</p>
+<label class="upload" for="exports"><span class="upload-icon">↥</span><strong>Выбрать файлы</strong><span>Один или несколько · до 24 MB суммарно</span></label><input id="exports" type="file" accept=".json,application/json" multiple hidden>
+<button class="secondary full" id="demo">Попробовать синтетический пример</button>
+<div id="chats" class="chat-list"><p class="empty-small">Переписки ещё не загружены</p></div>
+<details><summary>Результат импорта</summary><pre id="import-info">Пока нет загрузок.</pre></details>
+</section>
+<section class="panel history"><div class="panel-title"><h2>Предыдущие запуски</h2></div><div id="runs"><p class="muted">Пока нет отчётов</p></div></section>
+</aside>
+<div class="main-column">
+<section class="panel topic-panel"><div class="panel-title"><span class="number">02</span><h2>Тема анализа</h2><button class="text-button push" id="load-topic">Открыть настройки</button><input id="topic-file" type="file" accept=".json" hidden></div>
+<form id="analysis-form">
+<label for="topic">Что вы хотите узнать?</label><input id="topic" required maxlength="300" placeholder="Например, опыт использования домашних NAS">
+<label for="description">На что обратить внимание <span class="optional">необязательно</span></label><textarea id="description" rows="2" maxlength="2000" placeholder="Проблемы, решения, мнения участников…"></textarea>
+<div class="form-grid"><div><label for="mode">Охват</label><select id="mode"><option value="overview">Полный обзор периода</option><option value="question">Быстрый поиск</option></select></div><div><label for="backend">Способ анализа</label><select id="backend"><option value="extractive">Выдержки без модели</option><option value="ollama">Локальная модель · Ollama</option></select></div></div>
+<p id="backend-note" class="hint">Дословные выдержки по словам темы и связанным ответам. Доступно сразу.</p>
+<div id="model-fields" hidden><label for="model">Название локальной модели</label><div class="inline"><input id="model" value="qwen3.5:9b" list="model-list"><button id="check-models" class="secondary" type="button">Проверить</button></div><datalist id="model-list"><option value="qwen3.5:9b"><option value="qwen3.5:4b"><option value="qwen3:8b"></datalist><p id="model-status" class="hint">Основной кандидат — Qwen3.5-9B, быстрый вариант — 4B. Модель должна быть загружена в Ollama.</p></div>
+<details class="settings"><summary>Слова темы, исключения и период</summary>
+<label for="keywords">Слова и фразы через запятую</label><input id="keywords" placeholder="NAS, резервные копии, домашний сервер">
+<label for="exclusions">Исключения через запятую</label><input id="exclusions" placeholder="Например, NASCAR">
+<div class="form-grid"><div><label for="since">С даты</label><input id="since" type="date"></div><div><label for="until">По дату</label><input id="until" type="date"></div></div><p class="hint">Границы дат — по времени Томска, UTC+7. Без дат — весь импортированный период.</p>
+<label for="base-url">Адрес локальной Ollama</label><input id="base-url" value="http://127.0.0.1:11434">
+<button class="text-button" type="button" id="save-topic">Скачать настройки темы</button></details>
+<div class="form-footer"><span class="muted">Каждая находка ведёт к исходному сообщению</span><button class="primary" id="analyze" type="submit">Начать анализ <span>↗</span></button></div>
+</form></section>
+<section id="progress-panel" class="panel" hidden><div class="inline"><strong id="progress-title">Анализируем переписку…</strong><button id="cancel" class="text-button push">Остановить</button></div><progress id="progress" max="100" value="0"></progress><p id="progress-text" class="muted">Подготовка…</p></section>
+<section id="empty-results" class="panel empty-state"><div class="document-icon">≡</div><h2>Здесь появится отчёт</h2><p>Загрузите переписку или попробуйте синтетический пример.<br>Исходные сообщения будут доступны рядом с находками.</p><span class="pill">Без отправки переписки во внешние API</span></section>
+<section id="results" hidden><div class="result-heading"><div><p class="eyebrow">РЕЗУЛЬТАТ АНАЛИЗА</p><h2 id="report-title"></h2></div><div id="downloads" class="downloads"></div></div><div id="stats" class="stats"></div><p id="report-mode" class="muted"></p><div id="limitations" class="limitations"></div><div class="inline filters"><label for="type-filter">Тип находки</label><select id="type-filter"><option value="">Все типы</option></select><span id="finding-count" class="muted push"></span></div><div id="findings"></div><button id="missed" class="text-button">Сообщить о пропущенной находке</button></section>
+</div></div>
+<footer>Тема / локальный анализ · Демонстрационные переписки полностью синтетические</footer>
+</main>
+<dialog id="source-dialog"><div class="inline"><h2>Контекст сообщения</h2><button id="close-dialog" class="text-button push" aria-label="Закрыть контекст">✕</button></div><div id="source-content"></div></dialog>
+</body></html>

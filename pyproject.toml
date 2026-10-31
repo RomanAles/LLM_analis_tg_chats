@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tg-chat-analyzer"
+version = "1.0.0"
+description = "Local Telegram topic analysis with traceable evidence"
+requires-python = ">=3.11"
+dependencies = []
+readme = "README.md"
+
+[project.optional-dependencies]
+transformers = ["transformers>=4.51,<6", "torch>=2.6,<3", "accelerate>=1,<2"]
+quantization = ["bitsandbytes>=0.45,<1"]
+
+[project.scripts]
+tg-chat-analyzer = "tg_chat_analyzer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["tg_chat_analyzer*"]
+
+[tool.setuptools.package-data]
+tg_chat_analyzer = ["static/*", "demo/*.json"]

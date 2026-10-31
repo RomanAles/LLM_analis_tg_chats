@@ -1,0 +1,274 @@
+{
+  "synthetic": true,
+  "generator_version": 1,
+  "datasets": [
+    {
+      "split": "dev",
+      "chat": "dev.json",
+      "topic": "topic_dev.json",
+      "relevant_message_ids": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        16,
+        18,
+        19,
+        20,
+        21
+      ],
+      "cases": [
+        {
+          "message_id": 1,
+          "case": "purchase",
+          "relevant": true
+        },
+        {
+          "message_id": 2,
+          "case": "short_reply",
+          "relevant": true
+        },
+        {
+          "message_id": 3,
+          "case": "interleaved",
+          "relevant": false
+        },
+        {
+          "message_id": 4,
+          "case": "offtopic_reply",
+          "relevant": false
+        },
+        {
+          "message_id": 5,
+          "case": "entities",
+          "relevant": true
+        },
+        {
+          "message_id": 6,
+          "case": "negation",
+          "relevant": true
+        },
+        {
+          "message_id": 7,
+          "case": "question",
+          "relevant": true
+        },
+        {
+          "message_id": 8,
+          "case": "solution",
+          "relevant": true
+        },
+        {
+          "message_id": 9,
+          "case": "intention",
+          "relevant": true
+        },
+        {
+          "message_id": 10,
+          "case": "quote",
+          "relevant": true
+        },
+        {
+          "message_id": 11,
+          "case": "homonym",
+          "relevant": false
+        },
+        {
+          "message_id": 12,
+          "case": "paraphrase",
+          "relevant": true
+        },
+        {
+          "message_id": 13,
+          "case": "reply_chain",
+          "relevant": true
+        },
+        {
+          "message_id": 14,
+          "case": "no_context",
+          "relevant": false
+        },
+        {
+          "message_id": 15,
+          "case": "attachment",
+          "relevant": false
+        },
+        {
+          "message_id": 16,
+          "case": "missing_author",
+          "relevant": true
+        },
+        {
+          "message_id": 17,
+          "case": "service",
+          "relevant": false
+        },
+        {
+          "message_id": 18,
+          "case": "injection",
+          "relevant": true
+        },
+        {
+          "message_id": 19,
+          "case": "opposing_experience",
+          "relevant": true
+        },
+        {
+          "message_id": 20,
+          "case": "advertisement",
+          "relevant": true
+        },
+        {
+          "message_id": 21,
+          "case": "long_reply",
+          "relevant": true
+        },
+        {
+          "message_id": 22,
+          "case": "offtopic",
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "split": "holdout",
+      "chat": "holdout.json",
+      "topic": "topic_holdout.json",
+      "relevant_message_ids": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        16,
+        18,
+        19,
+        21
+      ],
+      "cases": [
+        {
+          "message_id": 1,
+          "case": "experience",
+          "relevant": true
+        },
+        {
+          "message_id": 2,
+          "case": "implicit_reply",
+          "relevant": true
+        },
+        {
+          "message_id": 3,
+          "case": "interleaved",
+          "relevant": false
+        },
+        {
+          "message_id": 4,
+          "case": "question",
+          "relevant": true
+        },
+        {
+          "message_id": 5,
+          "case": "unknown_price",
+          "relevant": true
+        },
+        {
+          "message_id": 6,
+          "case": "purchase",
+          "relevant": true
+        },
+        {
+          "message_id": 7,
+          "case": "negated_purchase",
+          "relevant": true
+        },
+        {
+          "message_id": 8,
+          "case": "excluded_topic",
+          "relevant": false
+        },
+        {
+          "message_id": 9,
+          "case": "entities",
+          "relevant": true
+        },
+        {
+          "message_id": 10,
+          "case": "solution",
+          "relevant": true
+        },
+        {
+          "message_id": 11,
+          "case": "paraphrase",
+          "relevant": true
+        },
+        {
+          "message_id": 12,
+          "case": "quoted_claim",
+          "relevant": true
+        },
+        {
+          "message_id": 13,
+          "case": "short_reply",
+          "relevant": true
+        },
+        {
+          "message_id": 14,
+          "case": "offtopic",
+          "relevant": false
+        },
+        {
+          "message_id": 15,
+          "case": "attachment",
+          "relevant": false
+        },
+        {
+          "message_id": 16,
+          "case": "missing_author",
+          "relevant": true
+        },
+        {
+          "message_id": 17,
+          "case": "service",
+          "relevant": false
+        },
+        {
+          "message_id": 18,
+          "case": "injection",
+          "relevant": true
+        },
+        {
+          "message_id": 19,
+          "case": "observation",
+          "relevant": true
+        },
+        {
+          "message_id": 20,
+          "case": "offtopic",
+          "relevant": false
+        },
+        {
+          "message_id": 21,
+          "case": "disagreement",
+          "relevant": true
+        },
+        {
+          "message_id": 22,
+          "case": "offtopic_reply",
+          "relevant": false
+        }
+      ]
+    }
+  ]
+}

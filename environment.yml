@@ -1,0 +1,9 @@
+name: tg-chat-analyzer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - setuptools
+  - pip:
+      - -e .

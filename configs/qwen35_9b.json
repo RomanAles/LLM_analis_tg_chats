@@ -1,0 +1,9 @@
+{
+  "backend": "ollama",
+  "model": "qwen3.5:9b",
+  "base_url": "http://127.0.0.1:11434",
+  "context_tokens": 8192,
+  "context_chars": 12000,
+  "max_output_tokens": 2048,
+  "temperature": 0.0
+}
